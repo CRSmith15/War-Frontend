@@ -80,7 +80,7 @@ html, body{
 .card::before,
 .card::after{
     position: absolute;
-    content: attr(card-value);
+    content: attr(data-value);
     font-size: 1.5rem;
 }
 
