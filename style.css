@@ -4,7 +4,7 @@ html, body{
     padding-left: 10px;
 }
 
-#right-menu-nav {
+.right-menu-nav {
     height: 100vh;
     float: right;
     margin-left: auto;
@@ -15,11 +15,11 @@ html, body{
     width:15%;
 }
 
-#right-menu-nav h2 {
+.right-menu-nav h2 {
     padding-left: 10px;
 }
 
-#game-container {
+.game-container {
     width: 50%;
     height: 300px;
     float: left;
@@ -49,11 +49,11 @@ html, body{
     border-radius: .5rem;
 }
 
-#dealer-deck {
+.dealer-deck {
     background-color: cornflowerblue;
 }
 
-#user-deck {
+.user-deck {
     background-color: tomato;
 }
 
@@ -96,7 +96,7 @@ html, body{
 
 }
 
-#round-outcome {
+.round-outcome {
     grid-column: span 2;
     display: flex;
     justify-content: center;
@@ -104,12 +104,12 @@ html, body{
     font-size: 2rem;
 }
 
-#game-title {
+.game-title {
    float: left;
    padding-left: 120px;
 }
 
-#score-container {
+.score-container {
     float: left;
     width: 50%;
     border-width: 4px;
@@ -120,6 +120,6 @@ html, body{
     padding: 0px;
 }
 
-#score-container h3 {
+.score-container h3 {
     padding-left: 10px;
 }
