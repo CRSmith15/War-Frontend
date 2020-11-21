@@ -57,6 +57,45 @@ html, body{
     background-color: tomato;
 }
 
+.card {
+    position: relative;
+    height: 100%;
+    width: 100%;
+    border: 1px solid black;
+    border-radius: .5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 6rem;
+}
+
+.card.black {
+    color: black;
+}
+
+.card.red {
+    color: red;
+}
+
+.card::before,
+.card::after{
+    position: absolute;
+    content: attr(card-value);
+    font-size: 1.5rem;
+}
+
+.card::before {
+    left: .5rem;
+    top: .5rem;
+}
+
+.card::after {
+    right: .5rem;
+    bottom: .5rem;
+    transform: rotate(180deg)
+
+}
+
 #round-outcome {
     grid-column: span 2;
     display: flex;
