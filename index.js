@@ -24,9 +24,15 @@ document.addEventListener("DOMContentLoaded", function(){
     const gameContainer = document.querySelector(".game-container")
 
 
-    let userDeck, dealerDeck, inGame;
+    let userDeck, dealerDeck, inGame, stop;
 
     gameContainer.addEventListener("click", () => {
+        if (stop) {
+            startGame()
+            return
+        }
+
+
         if (inGame) {
             cleanBeforeStart()
         } else {
@@ -43,6 +49,7 @@ document.addEventListener("DOMContentLoaded", function(){
       dealerDeck = new Deck(deck.cards.slice(0, deckHalf))
       userDeck = new Deck(deck.cards.slice(deckHalf, deck.totalCards))
       inGame = false 
+      stop = false
 
       cleanBeforeStart()
     }
@@ -66,6 +73,18 @@ document.addEventListener("DOMContentLoaded", function(){
 
         updateDeckTotal()
 
+        if (roundWinner(userCard, dealerCard)) {
+            text.innerHTML = "Round Won!"
+        } else if (roundWinner(dealerCard, userCard)){
+            text.innerHTML = "Round Lost"
+        } else {
+            text.innerHTML = "Tie"
+        }
+
+        if (gameOver(userDeck)){
+            text.innerHTML = "Game Over"
+            stop = true
+        }
     }
 
     function updateDeckTotal() {
@@ -74,7 +93,11 @@ document.addEventListener("DOMContentLoaded", function(){
     }
 
     function roundWinner(cardOne, cardTwo) {
-        
+        return CARD_VALUES[cardOne.value] > CARD_VALUES[cardTwo.value]
+    }
+
+    function gameOver(deck) {
+        return deck.totalCards === 0
     }
 
     //dealerSlot.appendChild(deck.cards[0].getHTML());
