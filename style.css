@@ -131,3 +131,20 @@ html, body{
     padding-left: 10px;
     font-size: 2rem;
 }
+
+#login-field {
+    width: 80%;
+    margin-left: 10px;
+}
+
+.login-button {
+    margin-left: 10px;
+}
+
+.game-rules {
+    margin-left: 10px;
+}
+
+.login-form h3 {
+    margin-left: 10px;
+}
