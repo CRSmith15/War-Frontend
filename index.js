@@ -14,17 +14,19 @@ document.addEventListener("DOMContentLoaded", function(){
         "Q": 12,
         "K": 13,
         "A": 14
-    }
+    };
     
     const dealerSlot = document.querySelector(".dealer-slot");
     const dealerDeckElement = document.querySelector(".dealer-deck");
     const userSlot = document.querySelector(".user-slot");
     const userDeckElement = document.querySelector(".user-deck");
-    const text = document.querySelector(".round-outcome")
-    const gameContainer = document.querySelector(".game-container")
+    const text = document.querySelector(".round-outcome");
+    const gameContainer = document.querySelector(".game-container");
+    const userPairs = document.querySelector(".user-pairs");
+    const dealerPairs = document.querySelector(".dealer-pairs");
 
 
-    let userDeck, dealerDeck, inGame, stop;
+    let userDeck, dealerDeck, inGame, stop, userWonPile, dealerWonPile;
 
     gameContainer.addEventListener("click", () => {
         if (stop) {
@@ -38,7 +40,7 @@ document.addEventListener("DOMContentLoaded", function(){
         } else {
             flipCards()
         }
-    })
+    });
 
     startGame()
     function startGame() {
@@ -50,9 +52,13 @@ document.addEventListener("DOMContentLoaded", function(){
       userDeck = new Deck(deck.cards.slice(deckHalf, deck.totalCards))
       inGame = false 
       stop = false
+      userWonPile = []
+      userPairs.innerHTML = `Your Win Pile: ${userWonPile.length}`
+      dealerWonPile = []
+      dealerPairs.innerHTML = `Dealer's Win Pile: ${dealerWonPile.length}`
 
       cleanBeforeStart()
-    }
+    };
     
     function cleanBeforeStart() {
         inGame = false
@@ -61,7 +67,7 @@ document.addEventListener("DOMContentLoaded", function(){
         text.innerHTML = ""
 
         updateDeckTotal()
-    }
+    };
 
     function flipCards() {
         inGame = true 
@@ -75,29 +81,43 @@ document.addEventListener("DOMContentLoaded", function(){
 
         if (roundWinner(userCard, dealerCard)) {
             text.innerHTML = "Round Won!"
+            userWonPile.push(userCard, dealerCard)
+            userPairs.innerHTML = `Your Win Pile: ${userWonPile.length}`
         } else if (roundWinner(dealerCard, userCard)){
             text.innerHTML = "Round Lost"
+            dealerWonPile.push(dealerCard, userCard)
+            dealerPairs.innerHTML = `Dealer's Win Pile: ${dealerWonPile.length}`
         } else {
             text.innerHTML = "Tie"
         }
 
         if (gameOver(userDeck)){
-            text.innerHTML = "Game Over"
+            gameWinner(userWonPile, dealerWonPile)
             stop = true
         }
-    }
+    };
 
     function updateDeckTotal() {
         dealerDeckElement.innerHTML = dealerDeck.totalCards
         userDeckElement.innerHTML = userDeck.totalCards
-    }
+    };
 
     function roundWinner(cardOne, cardTwo) {
         return CARD_VALUES[cardOne.value] > CARD_VALUES[cardTwo.value]
-    }
+    };
 
     function gameOver(deck) {
         return deck.totalCards === 0
+    };
+
+    function gameWinner(pileOne, pileTwo) {
+        if (pileOne.length > pileTwo.length) {
+            text.innerHTML = "Game Over, You Win!"
+        } else if (pileTwo.length > pileOne.length) {
+            text.innerHTML = "Game Over, Dealer Won."
+        } else {
+            text.innerHTML = "It's a Draw."
+        }
     }
 
     //dealerSlot.appendChild(deck.cards[0].getHTML());
