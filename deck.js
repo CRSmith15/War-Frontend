@@ -11,6 +11,10 @@ class Deck {
         return this.cards.length
     }
 
+    pop() {
+        return this.cards.shift()
+    }
+
     shuffle() {
         for (let i = this.totalCards -1; i > 0; i--){
             const newIndex = Math.floor(Math.random() * (i + 1))

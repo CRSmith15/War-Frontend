@@ -35,6 +35,8 @@ html, body{
     gap: .5rem;
     justify-content: center;
     padding: 20px 0 100px;
+    cursor: pointer;
+    user-select: none;
 }
 
 .deck {
