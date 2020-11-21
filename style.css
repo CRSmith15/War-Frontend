@@ -21,7 +21,7 @@ html, body{
 
 #game-container {
     width: 50%;
-    height: 600px;
+    height: 300px;
     float: left;
     margin-left: 0;
     margin-right: 100px;
@@ -29,6 +29,25 @@ html, body{
     border-width: 4px;
     border-color: black;
     border-style: solid;
+    display: grid;
+    grid-template-columns: repeat(2, 4rem);
+    grid-template-rows: 7rem 2rem 7rem;
+    gap: .5rem;
+    justify-content: center;
+    padding: 100px 0;
+}
+
+.deck {
+    height: 100%;
+    width: 100%;
+    border: 1px solid black;
+}
+
+#round-outcome {
+    grid-column: span 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #game-title {
