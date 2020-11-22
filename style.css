@@ -169,7 +169,15 @@ html, body{
 }
 
 .match-history-container {
+    user-select: none;
+    cursor: pointer;
     padding-left: 10px;
+    padding-bottom: 10px;
+}
+
+#logout {
+    padding-left: 10px;
+    color:  rgb(219, 219, 219);
 }
 
 
