@@ -168,10 +168,14 @@ html, body{
     font-size: 1rem;
 }
 
+.match-history-container {
+    padding-left: 10px;
+}
+
 
 
 .history-div {
-    border: 1px double black;
+    border: 4px double black;
     font-size: 2rem;
     float: left;
     padding: 10px;

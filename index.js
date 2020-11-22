@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", function(){
     userNameInput.focus()
     rulesDiv.hidden = true
     userHistory.hidden = true
-    gameRulesIcon.addEventListener("click", showRules, {once : true})
+    gameRulesIcon.addEventListener("click", showRules)
     
 
     gameContainer.addEventListener("click", () => {
@@ -144,7 +144,7 @@ document.addEventListener("DOMContentLoaded", function(){
                 userName = user 
                 userNameForm.hidden = true
                 const matchHistory = document.createElement('div')
-                matchHistory.className = "match-history"
+                matchHistory.className = "match-history-container"
                 matchHistory.innerHTML = "Match History"
                 rightMenu.appendChild(matchHistory)
                 matchHistory.addEventListener("click", showHistory)
@@ -162,21 +162,23 @@ document.addEventListener("DOMContentLoaded", function(){
     }, {once : true})
 
     function showRules() {
+        userHistory.hidden = true
         rulesDiv.hidden = false
-        const gameRulesDiv = document.createElement("div")
-        gameRulesDiv.className = "game-rules-div"
-        gameRulesDiv.innerHTML = "Rules of War!"
-        document.getElementsByClassName(".game-rules").style = "underline"
-        rulesDiv.appendChild(gameRulesDiv)
-        const rulesDescription = document.createElement("div")
-        rulesDescription.className = "rules-description"
-        rulesDescription.innerHTML = "Welcome to a verison of the classic Card game of War! The rules are simple. You play against the dealer and flip over the top card of your deck. The one with the higher value card wins the cards and addes them to the win pile. Whoever has the most in their win pile after all the cards in the deck have been flipped is the winner! Good Luck!"
-        gameRulesDiv.appendChild(rulesDescription)
+        rulesDiv.innerHTML = ""
+        rulesDiv.innerHTML = 
+        `<div class="game-rules-div">
+            <h2>Rules of War!</h2>
+            <div class="rules-description">
+                <h3>Welcome to a verison of the classic Card game of War! The rules are simple. You play against the dealer and flip over the top card of your deck. The one with the higher value card wins the cards and addes them to the win pile. Whoever has the most in their win pile after all the cards in the deck have been flipped is the winner! Good Luck!</h3>
+            </div>
+        </div>`
     }
 
+
     function showHistory() {
-        const gameHistoryDiv = document.createElement("div")
         userHistory.hidden = false
+        rulesDiv.hidden = true
+        const gameHistoryDiv = document.querySelector(".match-history")
         gameHistoryDiv.className = "history-div"
         gameHistoryDiv.innerHTML = "Match History goes here"
         userHistory.appendChild(gameHistoryDiv)
