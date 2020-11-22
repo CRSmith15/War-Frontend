@@ -143,8 +143,27 @@ html, body{
 
 .game-rules {
     margin-left: 10px;
+    user-select: none;
+    cursor: pointer;
 }
 
 .login-form h3 {
     margin-left: 10px;
+}
+
+.rules-div {
+    border: 4px double black;
+    float: left;
+    width: 50%;
+    font-size: 2rem;
+    
+}
+
+.game-rules-div {
+    margin: 10px;
+}
+
+
+.rules-description {
+    font-size: 1rem;
 }
