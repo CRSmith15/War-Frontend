@@ -167,3 +167,12 @@ html, body{
 .rules-description {
     font-size: 1rem;
 }
+
+
+
+.history-div {
+    border: 1px double black;
+    font-size: 2rem;
+    float: left;
+    padding: 10px;
+}

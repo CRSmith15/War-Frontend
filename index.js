@@ -37,6 +37,7 @@ document.addEventListener("DOMContentLoaded", function(){
 
     userNameInput.focus()
     rulesDiv.hidden = true
+    userHistory.hidden = true
     gameRulesIcon.addEventListener("click", showRules, {once : true})
     
 
@@ -175,9 +176,10 @@ document.addEventListener("DOMContentLoaded", function(){
 
     function showHistory() {
         const gameHistoryDiv = document.createElement("div")
+        userHistory.hidden = false
         gameHistoryDiv.className = "history-div"
         gameHistoryDiv.innerHTML = "Match History goes here"
-        gameRulesHistoryDiv.appendChild(gameHistoryDiv)
+        userHistory.appendChild(gameHistoryDiv)
     }
 
     //dealerSlot.appendChild(deck.cards[0].getHTML());
