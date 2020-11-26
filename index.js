@@ -39,6 +39,7 @@ document.addEventListener("DOMContentLoaded", function(){
     rulesDiv.hidden = true
     userHistory.hidden = true
     gameRulesIcon.addEventListener("click", showRules)
+    //gameRulesIcon.removeEventListener("click", showRules)
     
 
     gameContainer.addEventListener("click", () => {
@@ -178,11 +179,34 @@ document.addEventListener("DOMContentLoaded", function(){
     function showHistory() {
         userHistory.hidden = false
         rulesDiv.hidden = true
-        const gameHistoryDiv = document.querySelector(".match-history")
-        gameHistoryDiv.className = "history-div"
-        gameHistoryDiv.innerHTML = "Match History goes here"
-        userHistory.appendChild(gameHistoryDiv)
-    }
+        if (document.querySelector(".history-div") == null) {
+            const gameHistoryDiv = document.createElement('div')
+            gameHistoryDiv.className = "history-div"
+            gameHistoryDiv.innerHTML = 
+            `<h2>Welcome ${userName}</h2>
+            <div class="scores">Your 5 Previous Scores</div>`
+            userHistory.appendChild(gameHistoryDiv)
+        
+            adapter.getUsers().then(users => {
+                const currentUser = users.find(user => {
+                    return user.name === userName
+                });
+                const scoreArr = []
+                let scoreIndex = 0
+    
+                currentUser.games.forEach(game => {
+                    scoreArr.push(parseInt(game.pairs))
+                });
+                scoreArr.sort(function(a, b){return b-a}).slice(0,5).forEach(score =>  {
+                    scoreIndex++
+                    const gameScores = document.querySelector(".scores")
+                    gameScores.innerHTML += `<p>Game ${scoreIndex}-Cards Won: ${score}</p>`
+            });
+        })};
+
+        
+    
+    };
 
     //dealerSlot.appendChild(deck.cards[0].getHTML());
 });
