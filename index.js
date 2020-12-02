@@ -188,7 +188,9 @@ document.addEventListener("DOMContentLoaded", function(){
             const gameHistoryDiv = document.createElement('div')
             gameHistoryDiv.className = "history-div"
             gameHistoryDiv.innerHTML = 
-            `<h2>${userName}'s Match History</h2>`
+            `<h2>Welcome ${userName}</h2>
+            <h3>Your 5 Top Scores</h3>
+            <div class="scores"></div>`
             userHistory.appendChild(gameHistoryDiv)
             updateHitory()
             
@@ -198,7 +200,7 @@ document.addEventListener("DOMContentLoaded", function(){
     }
 
     function updateHitory() {
-        if (document.querySelector(".scores")){
+        document.querySelector(".scores").innerHTML = ""
         adapter.getUsers().then(users => {
             const currentUser = users.find(user => {
                 return user.name === userName
@@ -212,10 +214,7 @@ document.addEventListener("DOMContentLoaded", function(){
             scoreIndex++
             const gameScores = document.querySelector(".scores")
             gameScores.innerHTML += `<p>${scoreIndex} - Cards Won: ${score}</p>`
-            const histDiv = document.querySelector(".history-div")
-            histDiv.appendChild(gameScores)
         })});
-        }
         scoreIndex = 0
         scoreArr = []
     }
