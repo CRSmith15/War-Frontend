@@ -32,14 +32,16 @@ document.addEventListener("DOMContentLoaded", function(){
     const userHistory = document.querySelector(".match-history");
 
 
+
     let userDeck, dealerDeck, inGame, stop, userWonPile, dealerWonPile, userName;
     let loggedIn = false
+    let scoreArr = []
+    let scoreIndex = 0
 
     userNameInput.focus()
     rulesDiv.hidden = true
     userHistory.hidden = true
     gameRulesIcon.addEventListener("click", showRules)
-    //gameRulesIcon.removeEventListener("click", showRules)
     
 
     gameContainer.addEventListener("click", () => {
@@ -70,7 +72,6 @@ document.addEventListener("DOMContentLoaded", function(){
       userPairs.innerHTML = `Your Win Pile: ${userWonPile.length}`
       dealerWonPile = []
       dealerPairs.innerHTML = `Dealer's Win Pile: ${dealerWonPile.length}`
-
       cleanBeforeStart()
     };
     
@@ -108,6 +109,8 @@ document.addEventListener("DOMContentLoaded", function(){
         if (gameOver(userDeck)){
             gameWinner(userWonPile, dealerWonPile)
             stop = true
+            const body = {name: userName, pairs: userWonPile.length}
+            adapter.createGame(body)
         }
     };
 
@@ -132,6 +135,7 @@ document.addEventListener("DOMContentLoaded", function(){
         } else {
             text.innerHTML = "It's a Draw."
         }
+        updateHitory()
     }
 
     userNameForm.addEventListener('submit', x => {
@@ -155,6 +159,7 @@ document.addEventListener("DOMContentLoaded", function(){
                 logout.id = "logout"
                 logout.innerHTML = 'Logout'
                 rightMenu.appendChild(logout)
+                
 
             })
         } else {
@@ -183,30 +188,35 @@ document.addEventListener("DOMContentLoaded", function(){
             const gameHistoryDiv = document.createElement('div')
             gameHistoryDiv.className = "history-div"
             gameHistoryDiv.innerHTML = 
-            `<h2>Welcome ${userName}</h2>
-            <div class="scores">Your 5 Previous Scores</div>`
+            `<h2>${userName}'s Match History</h2>`
             userHistory.appendChild(gameHistoryDiv)
+            updateHitory()
+            
         
-            adapter.getUsers().then(users => {
-                const currentUser = users.find(user => {
-                    return user.name === userName
-                });
-                const scoreArr = []
-                let scoreIndex = 0
-    
-                currentUser.games.forEach(game => {
-                    scoreArr.push(parseInt(game.pairs))
-                });
-                scoreArr.sort(function(a, b){return b-a}).slice(0,5).forEach(score =>  {
-                    scoreIndex++
-                    const gameScores = document.querySelector(".scores")
-                    gameScores.innerHTML += `<p>Game ${scoreIndex}-Cards Won: ${score}</p>`
-            });
-        })};
-
-        
-    
     };
 
-    //dealerSlot.appendChild(deck.cards[0].getHTML());
-});
+    }
+
+    function updateHitory() {
+        if (document.querySelector(".scores")){
+        adapter.getUsers().then(users => {
+            const currentUser = users.find(user => {
+                return user.name === userName
+            });
+
+            currentUser.games.forEach(game => {
+                scoreArr.push(parseInt(game.pairs))
+            });
+           
+            scoreArr.sort(function(a, b){return b-a}).slice(0,5).forEach(score =>  {
+            scoreIndex++
+            const gameScores = document.querySelector(".scores")
+            gameScores.innerHTML += `<p>${scoreIndex} - Cards Won: ${score}</p>`
+            const histDiv = document.querySelector(".history-div")
+            histDiv.appendChild(gameScores)
+        })});
+        }
+        scoreIndex = 0
+        scoreArr = []
+    }
+})
