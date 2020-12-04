@@ -30,6 +30,7 @@ document.addEventListener("DOMContentLoaded", function(){
     const rulesDiv = document.querySelector(".rules-div");
     const gameRulesIcon = document.querySelector(".game-rules");
     const userHistory = document.querySelector(".match-history");
+    const playButton = document.querySelector(".play-button")
 
 
 
@@ -42,9 +43,10 @@ document.addEventListener("DOMContentLoaded", function(){
     rulesDiv.hidden = true
     userHistory.hidden = true
     gameRulesIcon.addEventListener("click", showRules)
+    playButton.hidden = true
     
 
-    gameContainer.addEventListener("click", () => {
+    playButton.addEventListener("click", () => {
         if (stop) {
             startGame()
             return
@@ -159,7 +161,9 @@ document.addEventListener("DOMContentLoaded", function(){
                 logout.id = "logout"
                 logout.innerHTML = 'Logout'
                 rightMenu.appendChild(logout)
-                
+                playButton.hidden = false
+                text.innerHTML = ""
+                showHistory()
 
             })
         } else {
