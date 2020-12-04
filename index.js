@@ -50,6 +50,7 @@ document.addEventListener("DOMContentLoaded", function(){
     playButton.addEventListener("click", () => {
         if (stop) {
             startGame()
+            updateHitory()
             return
         }
 
@@ -138,7 +139,7 @@ document.addEventListener("DOMContentLoaded", function(){
         } else {
             text.innerHTML = "It's a Draw."
         }
-        updateHitory()
+        //updateHitory()
     }
 
     userNameForm.addEventListener('submit', x => {
