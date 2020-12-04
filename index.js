@@ -44,6 +44,7 @@ document.addEventListener("DOMContentLoaded", function(){
     userHistory.hidden = true
     gameRulesIcon.addEventListener("click", showRules)
     playButton.hidden = true
+    text.innerHTML="Login to Play!"
     
 
     playButton.addEventListener("click", () => {
@@ -81,7 +82,7 @@ document.addEventListener("DOMContentLoaded", function(){
         inGame = false
         dealerSlot.innerHTML = ""
         userSlot.innerHTML = ""
-        text.innerHTML = ""
+        //text.innerHTML = ""
 
         updateDeckTotal()
     };
