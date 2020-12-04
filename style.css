@@ -1,7 +1,12 @@
+html {
+    height: 100%;
+}
+
 html, body{
     margin: 0;
     padding-top: 0;
     padding-left: 10px;
+    height: 100%
 }
 
 .right-menu-nav {
@@ -36,7 +41,6 @@ html, body{
     gap: .5rem;
     justify-content: center;
     padding: 20px 0 100px;
-    cursor: pointer;
     user-select: none;
 }
 
@@ -187,4 +191,24 @@ html, body{
     font-size: 2rem;
     float: left;
     padding: 10px;
+    position: relative;
+    width: 25%;
+    margin-left: 0;
+    margin-right: 100px;
+    padding: 0px;
+}
+
+.history-div h2 {
+    padding-left: 10px;
+    margin: 3px;
+}
+
+.history-div h3 {
+    padding-left: 10px;
+    margin: 4px;
+}
+
+.scores p {
+    padding-left: 10px;
+    margin: 10px;
 }
