@@ -22,6 +22,7 @@ html, body{
 
 .right-menu-nav h2 {
     padding-left: 10px;
+    font-family: Arial;
 }
 
 .game-container {
@@ -51,6 +52,7 @@ html, body{
     display: flex;
     justify-content: center;
     align-items: center;
+    font-family: Arial;
     font-size: 3rem;
     color: black;
     border-radius: .5rem;
@@ -74,6 +76,7 @@ html, body{
     justify-content: center;
     align-items: center;
     font-size: 6rem;
+    font-family: Arial;
 }
 
 .card.black {
@@ -89,6 +92,7 @@ html, body{
     position: absolute;
     content: attr(data-value);
     font-size: 1.5rem;
+    font-family: Arial;
 }
 
 .card::before {
@@ -109,10 +113,12 @@ html, body{
     justify-content: center;
     align-items: center;
     font-size: 19px;
+    font-family: Arial;
 }
 
 .game-title {
    padding-left: 10px;
+   font-family: Arial;
 }
 
 .score-container {
@@ -129,11 +135,13 @@ html, body{
 .user-pairs {
     padding-left: 10px;
     font-size: 2rem;
+    font-family: Arial;
 }
 
 .dealer-pairs {
     padding-left: 10px;
     font-size: 2rem;
+    font-family: Arial;
 }
 
 #login-field {
@@ -149,10 +157,12 @@ html, body{
     margin-left: 10px;
     user-select: none;
     cursor: pointer;
+    font-family: Arial;
 }
 
 .login-form h3 {
     margin-left: 10px;
+    font-family: Arial;
 }
 
 .rules-div {
@@ -160,16 +170,18 @@ html, body{
     float: left;
     width: 50%;
     font-size: 2rem;
-    
+    font-family: Arial;
 }
 
 .game-rules-div {
     margin: 10px;
+    font-family: Arial;
 }
 
 
 .rules-description {
     font-size: 1rem;
+    font-family: Arial;
 }
 
 .match-history-container {
@@ -177,11 +189,14 @@ html, body{
     cursor: pointer;
     padding-left: 10px;
     padding-bottom: 10px;
+    font-family: Arial;
 }
 
 #logout {
     padding-left: 10px;
     color:  rgb(219, 219, 219);
+    text-decoration: none;
+    font-family: Arial;
 }
 
 
@@ -201,14 +216,17 @@ html, body{
 .history-div h2 {
     padding-left: 10px;
     margin: 3px;
+    font-family: Arial;
 }
 
 .history-div h3 {
     padding-left: 10px;
     margin: 4px;
+    font-family: Arial;
 }
 
 .scores p {
     padding-left: 10px;
     margin: 10px;
+    font-family: Arial;
 }
